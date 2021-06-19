@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.batch";
+option go_package = "batch.sample";
+
+package batch;
+
+service BatchExecutor {
+  rpc Execute (BatchRequest) returns (stream BatchReply) {}
+}
+
+message BatchRequest {
+  string serviceName = 1;
+  string inputJson = 2;
+}
+
+message BatchReply {
+  string type = 1;
+  string output = 2;
+}
